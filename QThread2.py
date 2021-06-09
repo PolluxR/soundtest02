@@ -67,12 +67,11 @@ class Window(QDialog):
         self.show()
 
     def startrecord(self):
-        #self.thread1 = ThreadStatusBar()
-        #self.thread1.change_value.connect(self.setProgressVal)
+        self.thread1 = ThreadStatusBar()
+        self.thread1.change_value.connect(self.setProgressVal)
         self.thread2 = ThreadRecorder()
-        self.thread2.change_value.connect(self.threadrecord)
 
-        #self.thread1.start()
+        self.thread1.start()
         self.thread2.start()
 
         #self.thread1.join()
@@ -80,9 +79,6 @@ class Window(QDialog):
 
     def setProgressVal(self, val):
         self.progressbar.setValue(val)
-
-    def threadrecord(self, val):
-        record()
 
 App = QApplication(sys.argv)
 window = Window()
